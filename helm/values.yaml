@@ -72,4 +72,4 @@ jenkins:
     SecretsFilesSecret: jenkins-secrets
     DockerVM: false
   rbac:
-    install: true
+    create: true
