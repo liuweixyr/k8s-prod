@@ -22,12 +22,12 @@ chartmuseum:
       ingress.kubernetes.io/ssl-redirect: "false"
       nginx.ingress.kubernetes.io/ssl-redirect: "false"
     hosts:
-    - name: cm.192.168.99.100.nip.io # Change me!
+    - name: cm.192.168.99.101.nip.io # Change me!
       path: /  
 
 jenkins:
   master:
-    imageTag: "2.129-alpine"
+    imageTag: "lts-alpine"
     cpu: "500m"
     memory: "500Mi"
     serviceType: ClusterIP
@@ -35,29 +35,30 @@ jenkins:
       service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
     GlobalLibraries: true
     installPlugins:
-    - durable-task:1.22
-    - workflow-durable-task-step:2.19
-    - blueocean:1.7.1
-    - credentials:2.1.18
-    - ec2:1.39
-    - git:3.9.1
-    - git-client:2.7.3
-    - github:1.29.2
-    - kubernetes:1.12.0
-    - pipeline-utility-steps:2.1.0
-    - pipeline-model-definition:1.3.1
+    - durable-task:1.29
+    - workflow-durable-task-step:2.28
+    - blueocean:1.17.0
+    - credentials:2.2.0
+    - ec2:1.44.1
+    - git:3.10.0
+    - git-client:2.8.0
+    - github:1.29.4
+    - kubernetes:1.16.3
+    - pipeline-utility-steps:2.3.0
+    - pipeline-model-definition:1.3.9
     - script-security:1.44
-    - slack:2.3
+    - slack:2.27
     - thinBackup:1.9
-    - workflow-aggregator:2.5
-    - ssh-slaves:1.26
-    - ssh-agent:1.15
-    - jdk-tool:1.1
-    - command-launcher:1.2
-    - github-oauth:0.29
-    - google-compute-engine:1.0.4
+    - workflow-aggregator:2.6
+    - ssh-slaves:1.29.4
+    - ssh-agent:1.17
+    - jdk-tool:1.2
+    - command-launcher:1.3
+    - github-oauth:0.32
+    - google-compute-engine:3.3.2
     - pegdown-formatter:1.3
     ingress:
+      enabled: true
       annotations:
         kubernetes.io/ingress.class: "nginx"
         nginx.ingress.kubernetes.io/ssl-redirect: "false"
@@ -66,7 +67,7 @@ jenkins:
         ingress.kubernetes.io/ssl-redirect: "false"
         ingress.kubernetes.io/proxy-body-size: 50m
         ingress.kubernetes.io/proxy-request-buffering: "off"
-      hostName: jenkins.192.168.99.100.nip.io # Change me!
+      hostName: jenkins.192.168.99.101.nip.io # Change me!
     CustomConfigMap: true
     CredentialsXmlSecret: jenkins-credentials
     SecretsFilesSecret: jenkins-secrets
